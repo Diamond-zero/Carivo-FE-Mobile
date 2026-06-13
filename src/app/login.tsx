@@ -1,5 +1,5 @@
 import { LoginScreen } from '@/features/customer-booking/screens/login-screen';
 
-export default function AuthRoute() {
+export default function LoginRoute() {
   return <LoginScreen />;
 }

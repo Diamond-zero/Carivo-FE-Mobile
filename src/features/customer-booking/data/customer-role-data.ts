@@ -356,7 +356,7 @@ export const customerFeatureScreens: Record<CustomerRouteKey, CustomerFeatureScr
 };
 
 export const customerDashboardLinks = [
-  { label: 'Login / Register', href: '/auth', key: 'auth' },
+  { label: 'Login / Register', href: '/login', key: 'auth' },
   { label: 'Garage list', href: '/garages', key: 'garages' },
   { label: 'Services', href: '/services', key: 'services' },
   { label: 'Vehicles', href: '/vehicles', key: 'vehicles' },

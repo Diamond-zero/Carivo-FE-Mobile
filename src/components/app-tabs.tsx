@@ -36,7 +36,7 @@ export default function AppTabs() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="auth">
+      <NativeTabs.Trigger name="login">
         <NativeTabs.Trigger.Label>Login</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require('@/assets/images/tabIcons/explore.png')}

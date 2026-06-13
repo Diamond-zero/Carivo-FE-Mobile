@@ -18,7 +18,7 @@ export function PublicHomeScreen() {
                 <Text style={styles.brand}>Carivo</Text>
                 <Text style={styles.brandSub}>Wash booking</Text>
               </View>
-              <Link href="/auth" asChild>
+              <Link href="/login" asChild>
                 <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
                   <Text style={styles.loginText}>Login</Text>
                 </Pressable>
@@ -71,7 +71,7 @@ export function PublicHomeScreen() {
               Sign in to manage vehicles, choose time slots, create bookings, follow service status,
               apply loyalty points, and receive notifications.
             </Text>
-            <Link href="/auth" asChild>
+            <Link href="/login" asChild>
               <Pressable style={({ pressed }) => [styles.privateButton, pressed && styles.pressed]}>
                 <Text style={styles.privateButtonText}>Login / Register</Text>
               </Pressable>
@@ -159,14 +159,17 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   loginButton: {
-    minHeight: 42,
-    borderRadius: 14,
-    backgroundColor: 'rgba(255, 255, 255, 0.14)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.28)',
+    minHeight: 46,
+    borderRadius: 16,
+    backgroundColor: '#08a997',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
+    shadowColor: '#08a997',
+    shadowOpacity: 0.28,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 5,
   },
   loginText: {
     color: '#ffffff',

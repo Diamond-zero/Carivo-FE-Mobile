@@ -62,10 +62,10 @@ export function CustomTabList(props: TabListProps) {
 
         <View style={styles.tabGroup}>{props.children}</View>
 
-        <Link href="/auth" asChild>
+        <Link href="/login" asChild>
           <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
             <ThemedText type="smallBold" style={styles.loginText}>
-              Login
+              Login / Register
             </ThemedText>
           </Pressable>
         </Link>
@@ -131,12 +131,16 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.three,
   },
   loginButton: {
-    minHeight: 38,
-    borderRadius: Spacing.three,
+    minHeight: 44,
+    borderRadius: Spacing.four,
     backgroundColor: '#08a997',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: Spacing.three,
+    paddingHorizontal: Spacing.four,
+    shadowColor: '#08a997',
+    shadowOpacity: 0.28,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
   },
   loginText: {
     color: '#ffffff',
