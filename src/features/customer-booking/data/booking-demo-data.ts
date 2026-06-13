@@ -30,6 +30,7 @@ export type ServicePackage = {
   points: number;
   requiresWashBay: boolean;
   tag: string;
+  imageUrl: string;
 };
 
 export type TimeSlot = {
@@ -40,11 +41,19 @@ export type TimeSlot = {
   note: string;
 };
 
+export const heroVisual = {
+  imageUrl:
+    'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=85',
+  eyebrow: 'Premium wash booking',
+  title: 'Book a cleaner ride in minutes',
+  subtitle: 'Choose your garage, vehicle, service package, time slot, rewards, and confirm.',
+};
+
 export const garages: Garage[] = [
   {
     id: 'tan-phu',
     name: 'Carivo Tan Phu',
-    address: '87 Bo Bao Tan Thang, Tan Phu',
+    address: '87 Bo Bao Tan Thang, Tan Phu District',
     distance: '2.4 km',
     hours: '07:00 - 19:00',
     bays: 5,
@@ -52,7 +61,7 @@ export const garages: Garage[] = [
   {
     id: 'thu-duc',
     name: 'Carivo Thu Duc',
-    address: '77 Do Xuan Hop, Thu Duc',
+    address: '77 Do Xuan Hop, Thu Duc City',
     distance: '6.8 km',
     hours: '08:00 - 18:00',
     bays: 4,
@@ -60,7 +69,7 @@ export const garages: Garage[] = [
   {
     id: 'phu-nhuan',
     name: 'Carivo Phu Nhuan',
-    address: '84 Cu Lao, Phu Nhuan',
+    address: '84 Cu Lao, Phu Nhuan District',
     distance: '4.1 km',
     hours: '07:30 - 18:30',
     bays: 3,
@@ -73,7 +82,7 @@ export const vehicles: Vehicle[] = [
     name: 'Toyota Camry',
     plate: '30A-555.44',
     type: 'CAR',
-    detail: 'Sedan, xang, mau trang',
+    detail: 'White gasoline sedan',
     isDefault: true,
   },
   {
@@ -81,27 +90,29 @@ export const vehicles: Vehicle[] = [
     name: 'Honda Vision',
     plate: '29X1-333.44',
     type: 'MOTORBIKE',
-    detail: 'Xe may duoi 175cc, mau do',
+    detail: 'Red motorbike under 175cc',
   },
 ];
 
 export const servicePackages: ServicePackage[] = [
   {
     id: 'car-basic',
-    name: 'Rua oto tieu chuan',
-    description: 'Rua than xe, kinh, banh xe, lau kho va kiem tra nhanh ngoai that.',
+    name: 'Standard car wash',
+    description: 'Exterior foam wash, glass cleaning, wheel care, drying, and quick inspection.',
     vehicleType: 'CAR',
     price: 150000,
     durationMinutes: 45,
     washBayMinutes: 30,
     points: 30,
     requiresWashBay: true,
-    tag: 'Pho bien',
+    tag: 'Popular',
+    imageUrl:
+      'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 'car-basic-clean',
-    name: 'Basic Clean oto',
-    description: 'Rua cao cap, hut bui noi that, tay o kinh va duong nhua co ban.',
+    name: 'Basic clean package',
+    description: 'Premium wash, interior vacuum, glass spot removal, and basic trim care.',
     vehicleType: 'CAR',
     price: 280000,
     durationMinutes: 90,
@@ -109,11 +120,13 @@ export const servicePackages: ServicePackage[] = [
     points: 55,
     requiresWashBay: true,
     tag: 'Combo',
+    imageUrl:
+      'https://images.unsplash.com/photo-1608506375591-b90e1f955e4b?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 'car-ceramic',
-    name: 'Phu bao ve son',
-    description: 'Danh bong nhe va phu lop bao ve be mat son sau khi rua sach.',
+    name: 'Paint protection detail',
+    description: 'Light polishing and protective coating after a full surface preparation.',
     vehicleType: 'CAR',
     price: 900000,
     durationMinutes: 180,
@@ -121,23 +134,27 @@ export const servicePackages: ServicePackage[] = [
     points: 120,
     requiresWashBay: false,
     tag: 'Detailing',
+    imageUrl:
+      'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 'bike-basic',
-    name: 'Rua xe may tieu chuan',
-    description: 'Lam sach vo xe, mam, gam, kinh chieu hau va lau kho.',
+    name: 'Standard motorbike wash',
+    description: 'Body, wheel, undercarriage, mirror cleaning, and hand drying.',
     vehicleType: 'MOTORBIKE',
     price: 50000,
     durationMinutes: 20,
     washBayMinutes: 20,
     points: 12,
     requiresWashBay: true,
-    tag: 'Nhanh',
+    tag: 'Express',
+    imageUrl:
+      'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 'bike-premium',
-    name: 'Rua xe may cao cap',
-    description: 'Rua ky, ve sinh chi tiet, duong nhua nham va danh bong nhanh.',
+    name: 'Premium motorbike wash',
+    description: 'Detailed cleaning, matte plastic care, and fast finish polishing.',
     vehicleType: 'MOTORBIKE',
     price: 80000,
     durationMinutes: 30,
@@ -145,6 +162,8 @@ export const servicePackages: ServicePackage[] = [
     points: 18,
     requiresWashBay: true,
     tag: 'Premium',
+    imageUrl:
+      'https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&w=900&q=80',
   },
 ];
 
@@ -154,49 +173,49 @@ export const timeSlots: TimeSlot[] = [
     time: '07:00',
     range: '07:00 - 07:45',
     status: 'AVAILABLE',
-    note: 'Con 3 buong phu hop',
+    note: '3 matching bays left',
   },
   {
     id: '0830',
     time: '08:30',
     range: '08:30 - 09:15',
     status: 'AVAILABLE',
-    note: 'Khuyen nghi',
+    note: 'Recommended',
   },
   {
     id: '1000',
     time: '10:00',
     range: '10:00 - 10:45',
     status: 'LIMITED',
-    note: 'Con 1 slot',
+    note: '1 slot left',
   },
   {
     id: '1300',
     time: '13:00',
     range: '13:00 - 13:45',
     status: 'AVAILABLE',
-    note: 'Con nhieu slot',
+    note: 'Plenty of capacity',
   },
   {
     id: '1530',
     time: '15:30',
     range: '15:30 - 16:15',
     status: 'WAITLIST',
-    note: 'Co the vao waitlist',
+    note: 'Join waitlist',
   },
   {
     id: '1700',
     time: '17:00',
     range: '17:00 - 17:45',
     status: 'AVAILABLE',
-    note: 'Cuoi ngay',
+    note: 'Late afternoon',
   },
 ];
 
 export const loyalty = {
   tier: 'Gold',
   points: 350,
-  bookingWindow: '12 ngay',
+  bookingWindow: '12 days',
   maxUpcoming: 2,
   multiplier: 'x1.35',
   promotionCode: 'SILVER20',
@@ -206,18 +225,18 @@ export const loyalty = {
 export const upcomingBookings = [
   {
     id: '#A102',
-    service: 'Basic Clean oto',
+    service: 'Basic clean package',
     garage: 'Carivo Tan Phu',
     vehicle: '30A-555.44',
     time: '08:30, 15/06/2026',
-    status: 'Da xac nhan',
+    status: 'Confirmed',
   },
   {
     id: '#A098',
-    service: 'Rua xe may cao cap',
+    service: 'Premium motorbike wash',
     garage: 'Carivo Phu Nhuan',
     vehicle: '29X1-333.44',
     time: '17:00, 22/06/2026',
-    status: 'Cho thanh toan',
+    status: 'Awaiting payment',
   },
 ];

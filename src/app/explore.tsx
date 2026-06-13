@@ -9,24 +9,24 @@ export default function CustomerAccountRoute() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.kicker}>Customer profile</Text>
-          <Text style={styles.title}>Tai khoan cua toi</Text>
-          <Text style={styles.subtitle}>Hard-code screen de giao vien xem tong quan mobile app.</Text>
+          <Text style={styles.title}>My account</Text>
+          <Text style={styles.subtitle}>Hard-coded screen for reviewing the mobile app overview.</Text>
         </View>
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Loyalty</Text>
           <View style={styles.metricRow}>
-            <Metric label="Hang" value={loyalty.tier} />
-            <Metric label="Diem" value={`${loyalty.points}`} />
+            <Metric label="Tier" value={loyalty.tier} />
+            <Metric label="Points" value={`${loyalty.points}`} />
           </View>
           <View style={styles.metricRow}>
-            <Metric label="Dat truoc" value={loyalty.bookingWindow} />
+            <Metric label="Booking window" value={loyalty.bookingWindow} />
             <Metric label="He so" value={loyalty.multiplier} />
           </View>
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Xe da luu</Text>
+          <Text style={styles.sectionTitle}>Saved vehicles</Text>
           {vehicles.map((vehicle) => (
             <View key={vehicle.id} style={styles.listItem}>
               <Text style={styles.itemTitle}>{vehicle.name}</Text>
@@ -37,7 +37,7 @@ export default function CustomerAccountRoute() {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Booking gan day</Text>
+          <Text style={styles.sectionTitle}>Recent bookings</Text>
           {upcomingBookings.map((booking) => (
             <View key={booking.id} style={styles.listItem}>
               <Text style={styles.itemCode}>{booking.id}</Text>

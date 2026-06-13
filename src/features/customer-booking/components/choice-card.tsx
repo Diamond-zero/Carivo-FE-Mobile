@@ -1,15 +1,24 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type ChoiceCardProps = {
   title: string;
   subtitle?: string;
   meta?: string;
   tag?: string;
+  imageUrl?: string;
   selected?: boolean;
   onPress: () => void;
 };
 
-export function ChoiceCard({ title, subtitle, meta, tag, selected, onPress }: ChoiceCardProps) {
+export function ChoiceCard({
+  title,
+  subtitle,
+  meta,
+  tag,
+  imageUrl,
+  selected,
+  onPress,
+}: ChoiceCardProps) {
   return (
     <Pressable
       onPress={onPress}
@@ -18,6 +27,7 @@ export function ChoiceCard({ title, subtitle, meta, tag, selected, onPress }: Ch
         selected && styles.cardSelected,
         pressed && styles.pressed,
       ]}>
+      {imageUrl ? <Image source={{ uri: imageUrl }} style={styles.image} /> : null}
       <View style={styles.row}>
         <View style={[styles.dot, selected && styles.dotSelected]} />
         {tag ? <Text style={styles.tag}>{tag}</Text> : null}
@@ -53,6 +63,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 8,
+  },
+  image: {
+    width: '100%',
+    height: 112,
+    borderRadius: 12,
+    backgroundColor: '#dfe5ef',
   },
   dot: {
     width: 18,

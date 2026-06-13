@@ -3,8 +3,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 export type CustomerTab = 'booking' | 'schedule' | 'loyalty';
 
 const tabs: { id: CustomerTab; label: string }[] = [
-  { id: 'booking', label: 'Dat lich' },
-  { id: 'schedule', label: 'Lich cua toi' },
+  { id: 'booking', label: 'Book' },
+  { id: 'schedule', label: 'My schedule' },
   { id: 'loyalty', label: 'Loyalty' },
 ];
 

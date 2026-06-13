@@ -65,9 +65,9 @@ export function CustomerBookingScreen() {
 
             <View style={styles.panel}>
               <SectionTitle
-                eyebrow="Buoc 1"
-                title="Chon garage"
-                description="He thong se kiem tra wash bay active theo garage va loai xe."
+                eyebrow="Step 1"
+                title="Choose a garage"
+                description="The system will check active wash bay capacity by garage and vehicle type."
               />
               <HorizontalChoices>
                 {garages.map((garage) => (
@@ -85,9 +85,9 @@ export function CustomerBookingScreen() {
 
             <View style={styles.panel}>
               <SectionTitle
-                eyebrow="Buoc 2"
-                title="Chon xe"
-                description="Bien so se duoc backend normalize va kiem tra trung khi co API."
+                eyebrow="Step 2"
+                title="Choose your vehicle"
+                description="The backend will normalize license plates and validate ownership later."
               />
               <HorizontalChoices>
                 {vehicles.map((vehicle) => (
@@ -96,7 +96,7 @@ export function CustomerBookingScreen() {
                     title={vehicle.name}
                     subtitle={vehicle.plate}
                     meta={vehicle.detail}
-                    tag={vehicle.isDefault ? 'Mac dinh' : vehicle.type}
+                    tag={vehicle.isDefault ? 'Default' : vehicle.type}
                     selected={selectedVehicle.id === vehicle.id}
                     onPress={() => handleVehicleChange(vehicle)}
                   />
@@ -106,9 +106,9 @@ export function CustomerBookingScreen() {
 
             <View style={styles.panel}>
               <SectionTitle
-                eyebrow="Buoc 3"
-                title="Chon goi dich vu"
-                description="Moi ServicePackage co duration va wash bay time rieng."
+                eyebrow="Step 3"
+                title="Pick a service package"
+                description="Each ServicePackage has its own duration and wash bay occupancy time."
               />
               <View style={styles.cardGrid}>
                 {availablePackages.map((servicePackage) => (
@@ -120,6 +120,7 @@ export function CustomerBookingScreen() {
                       servicePackage.durationMinutes,
                     )}`}
                     tag={servicePackage.tag}
+                    imageUrl={servicePackage.imageUrl}
                     selected={selectedPackage.id === servicePackage.id}
                     onPress={() => setSelectedPackage(servicePackage)}
                   />
@@ -129,9 +130,9 @@ export function CustomerBookingScreen() {
 
             <View style={styles.panel}>
               <SectionTitle
-                eyebrow="Buoc 4"
-                title="Chon gio phu hop"
-                description="Slot day co the vao waitlist theo priority cua hang thanh vien."
+                eyebrow="Step 4"
+                title="Choose a time slot"
+                description="Full slots can move into a waitlist using membership priority."
               />
               <View style={styles.slotGrid}>
                 {timeSlots.map((slot) => (
@@ -153,21 +154,21 @@ export function CustomerBookingScreen() {
 
             <View style={styles.panel}>
               <SectionTitle
-                eyebrow="Buoc 5"
-                title="Uu dai va diem"
-                description="Hard-code rule demo: 1 diem = 1.000d, dung theo buoc 10 diem."
+                eyebrow="Step 5"
+                title="Apply rewards"
+                description="Demo rule: 1 point = 1,000 VND, redeemable in 10-point steps."
               />
               <View style={styles.promoCard}>
                 <Text style={styles.promoCode}>{loyalty.promotionCode}</Text>
-                <Text style={styles.promoTitle}>Uu dai thanh vien {loyalty.tier}</Text>
+                <Text style={styles.promoTitle}>{loyalty.tier} member offer</Text>
                 <Text style={styles.promoText}>
-                  Giam truc tiep {formatCurrency(loyalty.promotionDiscount)} cho booking nay.
+                  Save {formatCurrency(loyalty.promotionDiscount)} on this booking.
                 </Text>
               </View>
               <View style={styles.pointsRow}>
                 <View style={styles.pointsCopy}>
-                  <Text style={styles.pointsLabel}>Diem muon dung</Text>
-                  <Text style={styles.pointsHint}>Kha dung: {loyalty.points} diem</Text>
+                  <Text style={styles.pointsLabel}>Points to redeem</Text>
+                  <Text style={styles.pointsHint}>Available: {loyalty.points} points</Text>
                 </View>
                 <TextInput
                   keyboardType="number-pad"
@@ -202,8 +203,8 @@ function BookingIntro() {
     <View style={styles.introPanel}>
       <Text style={styles.introTitle}>Customer booking app</Text>
       <Text style={styles.introText}>
-        Flow demo theo docs: chon garage, xe, goi dich vu, slot, promotion, diem loyalty va
-        xac nhan booking. Du lieu dang hard-code de demo giao dien.
+        Demo flow from the project docs: choose a garage, vehicle, service package, slot,
+        promotion, loyalty points, then confirm the booking. Data is hard-coded for UI review.
       </Text>
     </View>
   );
@@ -240,27 +241,27 @@ function BookingSummary({
   return (
     <View style={styles.summary}>
       <SectionTitle
-        eyebrow="Tom tat"
-        title="Xac nhan booking"
-        description="Khi co API, nut nay se tao booking CONFIRMED hoac PENDING."
+        eyebrow="Summary"
+        title="Confirm booking"
+        description="When the API is ready, this action will create a CONFIRMED or PENDING booking."
       />
       <View style={styles.summaryBox}>
         <SummaryLine label="Garage" value={garage.name} />
-        <SummaryLine label="Xe" value={`${vehicle.name} - ${vehicle.plate}`} />
-        <SummaryLine label="Dich vu" value={servicePackage.name} />
-        <SummaryLine label="Thoi gian" value={`${slot.range}, 15/06/2026`} />
-        <SummaryLine label="Gia goc" value={formatCurrency(servicePackage.price)} />
+        <SummaryLine label="Vehicle" value={`${vehicle.name} - ${vehicle.plate}`} />
+        <SummaryLine label="Service" value={servicePackage.name} />
+        <SummaryLine label="Time" value={`${slot.range}, 15/06/2026`} />
+        <SummaryLine label="Base price" value={formatCurrency(servicePackage.price)} />
         <SummaryLine label="Promotion" value={`-${formatCurrency(loyalty.promotionDiscount)}`} />
-        <SummaryLine label="Diem dung" value={`-${formatCurrency(usedPoints * 1000)}`} />
+        <SummaryLine label="Redeemed points" value={`-${formatCurrency(usedPoints * 1000)}`} />
         <View style={styles.divider} />
-        <SummaryLine label="Thanh toan tai garage" value={formatCurrency(finalPrice)} strong />
+        <SummaryLine label="Pay at garage" value={formatCurrency(finalPrice)} strong />
       </View>
       <View style={styles.earnedBox}>
-        <Text style={styles.earnedTitle}>Du kien nhan {earnedPoints} diem</Text>
-        <Text style={styles.earnedText}>Diem duoc cong sau khi COMPLETED + PAID.</Text>
+        <Text style={styles.earnedTitle}>Estimated reward: {earnedPoints} points</Text>
+        <Text style={styles.earnedText}>Points are added after COMPLETED + PAID.</Text>
       </View>
       <Pressable style={({ pressed }) => [styles.confirmButton, pressed && styles.pressed]}>
-        <Text style={styles.confirmText}>Xac nhan dat lich</Text>
+        <Text style={styles.confirmText}>Confirm booking</Text>
       </Pressable>
     </View>
   );
@@ -279,9 +280,9 @@ function ScheduleTab() {
   return (
     <View style={styles.panel}>
       <SectionTitle
-        eyebrow="Lich cua toi"
-        title="Booking sap toi"
-        description="Customer theo doi trang thai booking va tien do sau khi staff check-in."
+        eyebrow="My schedule"
+        title="Upcoming bookings"
+        description="Customers can track booking status and service progress after staff check-in."
       />
       <View style={styles.bookingList}>
         {upcomingBookings.map((booking) => (
@@ -306,22 +307,22 @@ function LoyaltyTab() {
       <View style={styles.panel}>
         <SectionTitle
           eyebrow="Loyalty"
-          title={`Hang ${loyalty.tier}`}
-          description="Diem chi duoc cong khi booking hoan tat va da thanh toan."
+          title={`${loyalty.tier} tier`}
+          description="Points are added only after a booking is completed and paid."
         />
         <View style={styles.metricGrid}>
-          <Metric label="Diem kha dung" value={`${loyalty.points}`} detail="= 350.000d demo" />
-          <Metric label="Dat truoc" value={loyalty.bookingWindow} detail="Theo tier hien tai" />
-          <Metric label="He so diem" value={loyalty.multiplier} detail="Sau thanh toan" />
-          <Metric label="Booking toi da" value={`${loyalty.maxUpcoming}`} detail="Sap toi" />
+          <Metric label="Available points" value={`${loyalty.points}`} detail="= 350,000 VND demo" />
+          <Metric label="Booking window" value={loyalty.bookingWindow} detail="Current tier" />
+          <Metric label="Points multiplier" value={loyalty.multiplier} detail="After payment" />
+          <Metric label="Booking limit" value={`${loyalty.maxUpcoming}`} detail="Upcoming" />
         </View>
       </View>
       <View style={styles.darkPanel}>
-        <Text style={styles.darkTitle}>Quyen loi Gold</Text>
-        <Text style={styles.darkText}>Dat lich truoc 12 ngay.</Text>
-        <Text style={styles.darkText}>Giu toi da 2 booking sap toi.</Text>
-        <Text style={styles.darkText}>Priority level 3 khi vao waitlist.</Text>
-        <Text style={styles.darkText}>Tich diem theo he so x1.35.</Text>
+        <Text style={styles.darkTitle}>Gold benefits</Text>
+        <Text style={styles.darkText}>Book up to 12 days in advance.</Text>
+        <Text style={styles.darkText}>Hold up to 2 upcoming bookings.</Text>
+        <Text style={styles.darkText}>Priority level 3 in the waitlist.</Text>
+        <Text style={styles.darkText}>Earn points with a x1.35 multiplier.</Text>
       </View>
     </View>
   );
