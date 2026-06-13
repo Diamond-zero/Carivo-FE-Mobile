@@ -1,5 +1,5 @@
 import { CustomerFeatureScreen } from '@/features/customer-booking/screens/customer-feature-screen';
 
-export default function HomeRoute() {
-  return <CustomerFeatureScreen routeKey="home" />;
+export default function ProfileRoute() {
+  return <CustomerFeatureScreen routeKey="profile" />;
 }
