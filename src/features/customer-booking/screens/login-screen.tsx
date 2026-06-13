@@ -9,9 +9,15 @@ export function LoginScreen() {
   const isWide = width >= 860;
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
 
   function handleLogin() {
-    router.replace('/booking');
+    const payload = { phone, hasPassword: password.length > 0 };
+    console.log('Customer login pressed', payload);
+    setLoginMessage('Login event captured. Opening booking flow...');
+    setTimeout(() => {
+      router.replace('/booking');
+    }, 350);
   }
 
   return (
@@ -85,17 +91,8 @@ export function LoginScreen() {
                 style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
                 <Text style={styles.loginText}>Login</Text>
               </Pressable>
+              {loginMessage ? <Text style={styles.loginMessage}>{loginMessage}</Text> : null}
             </View>
-
-            <View style={styles.dividerRow}>
-              <View style={styles.divider} />
-              <Text style={styles.dividerText}>or</Text>
-              <View style={styles.divider} />
-            </View>
-
-            <Pressable style={({ pressed }) => [styles.registerButton, pressed && styles.pressed]}>
-              <Text style={styles.registerText}>Create customer account</Text>
-            </Pressable>
 
             <Link href="/" asChild>
               <Pressable style={({ pressed }) => [styles.backHome, pressed && styles.pressed]}>
@@ -314,35 +311,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '900',
   },
-  dividerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  divider: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#dfe5ef',
-  },
-  dividerText: {
-    color: '#91a0b6',
-    fontSize: 12,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-  },
-  registerButton: {
-    minHeight: 50,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#b7f4e7',
-    backgroundColor: '#ecfffb',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  registerText: {
+  loginMessage: {
     color: '#047f73',
-    fontSize: 14,
-    fontWeight: '900',
+    fontSize: 13,
+    fontWeight: '800',
+    textAlign: 'center',
   },
   backHome: {
     alignItems: 'center',

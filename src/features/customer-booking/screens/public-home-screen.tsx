@@ -73,7 +73,7 @@ export function PublicHomeScreen() {
             </Text>
             <Link href="/login" asChild>
               <Pressable style={({ pressed }) => [styles.privateButton, pressed && styles.pressed]}>
-                <Text style={styles.privateButtonText}>Login / Register</Text>
+                <Text style={styles.privateButtonText}>Login</Text>
               </Pressable>
             </Link>
           </View>

@@ -1,4 +1,3 @@
-import { Link } from 'expo-router';
 import { Tabs, TabList, TabSlot, TabTrigger, TabTriggerSlotProps, TabListProps } from 'expo-router/ui';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -22,6 +21,9 @@ export default function AppTabs() {
           <TabTrigger name="garages" href="/garages" asChild>
             <TabButton>Garages</TabButton>
           </TabTrigger>
+          <TabTrigger name="login" href="/login" asChild>
+            <LoginTabButton>Login</LoginTabButton>
+          </TabTrigger>
         </CustomTabList>
       </TabList>
     </Tabs>
@@ -38,6 +40,16 @@ export function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps
           {children}
         </ThemedText>
       </ThemedView>
+    </Pressable>
+  );
+}
+
+export function LoginTabButton({ children, ...props }: TabTriggerSlotProps) {
+  return (
+    <Pressable {...props} style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
+      <ThemedText type="smallBold" style={styles.loginText}>
+        {children}
+      </ThemedText>
     </Pressable>
   );
 }
@@ -61,14 +73,6 @@ export function CustomTabList(props: TabListProps) {
         </View>
 
         <View style={styles.tabGroup}>{props.children}</View>
-
-        <Link href="/login" asChild>
-          <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
-            <ThemedText type="smallBold" style={styles.loginText}>
-              Login / Register
-            </ThemedText>
-          </Pressable>
-        </Link>
       </ThemedView>
     </View>
   );
