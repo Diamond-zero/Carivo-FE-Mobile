@@ -32,7 +32,7 @@ export function CustomerFeatureScreen({ routeKey }: CustomerFeatureScreenProps) 
         {routeKey === 'home' ? <DashboardLinks /> : null}
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Demo data</Text>
+          <Text style={styles.sectionTitle}>Overview</Text>
           <View style={styles.list}>
             {config.items.map((item) => (
               <View key={`${item.title}-${item.meta ?? item.status ?? ''}`} style={styles.card}>
@@ -43,17 +43,6 @@ export function CustomerFeatureScreen({ routeKey }: CustomerFeatureScreenProps) 
                 <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
                 {item.meta ? <Text style={styles.cardMeta}>{item.meta}</Text> : null}
               </View>
-            ))}
-          </View>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>API coverage</Text>
-          <View style={styles.apiList}>
-            {config.apiList.map((api) => (
-              <Text key={api} style={styles.apiText}>
-                {api}
-              </Text>
             ))}
           </View>
         </View>
@@ -182,19 +171,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     fontSize: 11,
     fontWeight: '900',
-  },
-  apiList: {
-    gap: 8,
-  },
-  apiText: {
-    color: '#334155',
-    backgroundColor: '#f1f5f9',
-    borderRadius: 12,
-    overflow: 'hidden',
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    fontSize: 12,
-    fontWeight: '800',
   },
   linkGrid: {
     flexDirection: 'row',

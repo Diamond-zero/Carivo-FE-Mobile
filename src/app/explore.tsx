@@ -10,7 +10,7 @@ export default function CustomerAccountRoute() {
         <View style={styles.header}>
           <Text style={styles.kicker}>Customer profile</Text>
           <Text style={styles.title}>My account</Text>
-          <Text style={styles.subtitle}>Hard-coded screen for reviewing the mobile app overview.</Text>
+          <Text style={styles.subtitle}>Manage your vehicles, rewards, and upcoming wash appointments.</Text>
         </View>
 
         <View style={styles.card}>
@@ -21,7 +21,7 @@ export default function CustomerAccountRoute() {
           </View>
           <View style={styles.metricRow}>
             <Metric label="Booking window" value={loyalty.bookingWindow} />
-            <Metric label="He so" value={loyalty.multiplier} />
+            <Metric label="Multiplier" value={loyalty.multiplier} />
           </View>
         </View>
 

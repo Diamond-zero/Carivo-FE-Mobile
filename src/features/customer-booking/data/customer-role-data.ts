@@ -155,7 +155,7 @@ export const customerFeatureScreens: Record<CustomerRouteKey, CustomerFeatureScr
     eyebrow: 'Sprint 1',
     title: 'Authentication',
     description: 'Register, login, logout, refresh token, and update customer profile.',
-    primaryAction: 'Continue as demo customer',
+    primaryAction: 'Continue',
     apiList: [
       'POST /api/v1/auth/register',
       'POST /api/v1/auth/login',
@@ -173,8 +173,8 @@ export const customerFeatureScreens: Record<CustomerRouteKey, CustomerFeatureScr
       {
         title: 'Create account',
         subtitle: 'New users register using phone, email, and password.',
-        meta: 'JWT later',
-        status: 'Prototype',
+        meta: 'Secure sign-in',
+        status: 'New',
       },
     ],
   },
@@ -182,7 +182,7 @@ export const customerFeatureScreens: Record<CustomerRouteKey, CustomerFeatureScr
     key: 'home',
     eyebrow: 'Customer role',
     title: 'Mobile customer dashboard',
-    description: 'A hard-coded app overview for booking, loyalty, service tracking, and profile.',
+    description: 'A customer app overview for booking, loyalty, service tracking, and profile.',
     primaryAction: 'Start booking',
     apiList: ['GET /api/v1/users/me', 'GET /api/v1/bookings', 'GET /api/v1/loyalty/me'],
     items: [

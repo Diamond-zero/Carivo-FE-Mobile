@@ -67,7 +67,7 @@ export function CustomerBookingScreen() {
               <SectionTitle
                 eyebrow="Step 1"
                 title="Choose a garage"
-                description="The system will check active wash bay capacity by garage and vehicle type."
+                description="Pick the most convenient branch and review its current wash bay capacity."
               />
               <HorizontalChoices>
                 {garages.map((garage) => (
@@ -87,7 +87,7 @@ export function CustomerBookingScreen() {
               <SectionTitle
                 eyebrow="Step 2"
                 title="Choose your vehicle"
-                description="The backend will normalize license plates and validate ownership later."
+                description="Select the vehicle you want to bring in for this appointment."
               />
               <HorizontalChoices>
                 {vehicles.map((vehicle) => (
@@ -108,7 +108,7 @@ export function CustomerBookingScreen() {
               <SectionTitle
                 eyebrow="Step 3"
                 title="Pick a service package"
-                description="Each ServicePackage has its own duration and wash bay occupancy time."
+                description="Choose the wash or detailing package that fits your vehicle today."
               />
               <View style={styles.cardGrid}>
                 {availablePackages.map((servicePackage) => (
@@ -156,7 +156,7 @@ export function CustomerBookingScreen() {
               <SectionTitle
                 eyebrow="Step 5"
                 title="Apply rewards"
-                description="Demo rule: 1 point = 1,000 VND, redeemable in 10-point steps."
+                description="Use available reward points to reduce the amount paid at the garage."
               />
               <View style={styles.promoCard}>
                 <Text style={styles.promoCode}>{loyalty.promotionCode}</Text>
@@ -203,8 +203,8 @@ function BookingIntro() {
     <View style={styles.introPanel}>
       <Text style={styles.introTitle}>Customer booking app</Text>
       <Text style={styles.introText}>
-        Demo flow from the project docs: choose a garage, vehicle, service package, slot,
-        promotion, loyalty points, then confirm the booking. Data is hard-coded for UI review.
+        Book a wash in a few steps: choose a garage, vehicle, service package, appointment time,
+        rewards, then confirm your visit.
       </Text>
     </View>
   );
@@ -243,7 +243,7 @@ function BookingSummary({
       <SectionTitle
         eyebrow="Summary"
         title="Confirm booking"
-        description="When the API is ready, this action will create a CONFIRMED or PENDING booking."
+        description="Review your appointment details before sending the booking request."
       />
       <View style={styles.summaryBox}>
         <SummaryLine label="Garage" value={garage.name} />
@@ -311,7 +311,7 @@ function LoyaltyTab() {
           description="Points are added only after a booking is completed and paid."
         />
         <View style={styles.metricGrid}>
-          <Metric label="Available points" value={`${loyalty.points}`} detail="= 350,000 VND demo" />
+          <Metric label="Available points" value={`${loyalty.points}`} detail="Redeem on booking" />
           <Metric label="Booking window" value={loyalty.bookingWindow} detail="Current tier" />
           <Metric label="Points multiplier" value={loyalty.multiplier} detail="After payment" />
           <Metric label="Booking limit" value={`${loyalty.maxUpcoming}`} detail="Upcoming" />
