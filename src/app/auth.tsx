@@ -1,5 +1,5 @@
-import { CustomerFeatureScreen } from '@/features/customer-booking/screens/customer-feature-screen';
+import { LoginScreen } from '@/features/customer-booking/screens/login-screen';
 
 export default function AuthRoute() {
-  return <CustomerFeatureScreen routeKey="auth" />;
+  return <LoginScreen />;
 }

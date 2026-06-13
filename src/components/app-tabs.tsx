@@ -20,32 +20,24 @@ export default function AppTabs() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="booking">
-        <NativeTabs.Trigger.Label>Book</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="services">
+        <NativeTabs.Trigger.Label>Services</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require('@/assets/images/tabIcons/home.png')}
           renderingMode="template"
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="bookings">
-        <NativeTabs.Trigger.Label>Bookings</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="garages">
+        <NativeTabs.Trigger.Label>Garages</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require('@/assets/images/tabIcons/explore.png')}
           renderingMode="template"
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="loyalty">
-        <NativeTabs.Trigger.Label>Loyalty</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="explore">
-        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="auth">
+        <NativeTabs.Trigger.Label>Login</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require('@/assets/images/tabIcons/explore.png')}
           renderingMode="template"

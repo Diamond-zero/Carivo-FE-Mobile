@@ -1,9 +1,7 @@
-import { Link, type Href } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
-  customerDashboardLinks,
   customerFeatureScreens,
   type CustomerRouteKey,
 } from '../data/customer-role-data';
@@ -29,8 +27,6 @@ export function CustomerFeatureScreen({ routeKey }: CustomerFeatureScreenProps) 
           ) : null}
         </View>
 
-        {routeKey === 'home' ? <DashboardLinks /> : null}
-
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Overview</Text>
           <View style={styles.list}>
@@ -48,24 +44,6 @@ export function CustomerFeatureScreen({ routeKey }: CustomerFeatureScreenProps) 
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
-}
-
-function DashboardLinks() {
-  return (
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle}>Customer screens</Text>
-      <View style={styles.linkGrid}>
-        {customerDashboardLinks.map((item) => (
-          <Link key={item.href} href={item.href as Href} asChild>
-            <Pressable style={({ pressed }) => [styles.linkCard, pressed && styles.pressed]}>
-              <Text style={styles.linkLabel}>{item.label}</Text>
-              <Text style={styles.linkMeta}>Open screen</Text>
-            </Pressable>
-          </Link>
-        ))}
-      </View>
-    </View>
   );
 }
 
@@ -171,31 +149,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     fontSize: 11,
     fontWeight: '900',
-  },
-  linkGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
-  },
-  linkCard: {
-    width: '47.8%',
-    minHeight: 86,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#dfe5ef',
-    backgroundColor: '#ffffff',
-    padding: 12,
-    justifyContent: 'space-between',
-  },
-  linkLabel: {
-    color: '#07111f',
-    fontSize: 14,
-    fontWeight: '900',
-  },
-  linkMeta: {
-    color: '#047f73',
-    fontSize: 12,
-    fontWeight: '800',
   },
   pressed: {
     opacity: 0.72,

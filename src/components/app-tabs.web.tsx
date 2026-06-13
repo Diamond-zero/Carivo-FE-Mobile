@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { Tabs, TabList, TabSlot, TabTrigger, TabTriggerSlotProps, TabListProps } from 'expo-router/ui';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -15,17 +16,11 @@ export default function AppTabs() {
           <TabTrigger name="home" href="/" asChild>
             <TabButton>Home</TabButton>
           </TabTrigger>
-          <TabTrigger name="booking" href="/booking" asChild>
-            <TabButton>Book</TabButton>
+          <TabTrigger name="services" href="/services" asChild>
+            <TabButton>Services</TabButton>
           </TabTrigger>
-          <TabTrigger name="bookings" href="/bookings" asChild>
-            <TabButton>Bookings</TabButton>
-          </TabTrigger>
-          <TabTrigger name="loyalty" href="/loyalty" asChild>
-            <TabButton>Loyalty</TabButton>
-          </TabTrigger>
-          <TabTrigger name="account" href="/explore" asChild>
-            <TabButton>Profile</TabButton>
+          <TabTrigger name="garages" href="/garages" asChild>
+            <TabButton>Garages</TabButton>
           </TabTrigger>
         </CustomTabList>
       </TabList>
@@ -66,6 +61,14 @@ export function CustomTabList(props: TabListProps) {
         </View>
 
         <View style={styles.tabGroup}>{props.children}</View>
+
+        <Link href="/auth" asChild>
+          <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.pressed]}>
+            <ThemedText type="smallBold" style={styles.loginText}>
+              Login
+            </ThemedText>
+          </Pressable>
+        </Link>
       </ThemedView>
     </View>
   );
@@ -114,6 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.one,
+    marginLeft: 'auto',
   },
   activeTab: {
     backgroundColor: '#ffffff',
@@ -125,5 +129,16 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.one,
     paddingHorizontal: Spacing.three,
     borderRadius: Spacing.three,
+  },
+  loginButton: {
+    minHeight: 38,
+    borderRadius: Spacing.three,
+    backgroundColor: '#08a997',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.three,
+  },
+  loginText: {
+    color: '#ffffff',
   },
 });
